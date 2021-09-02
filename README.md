@@ -2,8 +2,12 @@
 
 # Description
 This Email Python Framework allows the user to email attachments to the configured recipients. 
+
 The framework picks the latest file of a .csv type from a pre-configured folder and emails that to a set of pre-configured recipients.
+
 The set of recipients, attachement folder, smtp server, smtup user-password can be configured in the Configuration file.
+
+The Framework can be integrated with CronTab, so that Cron can initiaite the Framework at a certain day & time to pick the latest file of type .csv and email as attachment.
 
 # Installation
 
