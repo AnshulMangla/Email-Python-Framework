@@ -53,4 +53,4 @@ The python framework will pick the latest .csv file from the configured director
 
 The following output will be displayed i.e. the attachment file name and the list of recipients:
 
-    _"Your attachment [attachment1.csv] to the recipients [recipent1@recipient.com, recipent2@recipient.com] has been emailed"_
+    "Your attachment [attachment1.csv] to the recipients [recipent1@recipient.com, recipent2@recipient.com] has been emailed"
