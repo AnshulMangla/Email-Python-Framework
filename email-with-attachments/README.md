@@ -1,7 +1,9 @@
-# Intersight-Python-Automation
+# Email-Python-Framework
 
 # Description
-This Intersight Python Automation toolkit is a set Python library which allows the user to run various Intersight GET REST APIs and offers various API param options, including the filters. This also exports the returned JSON format to a CSV format.
+This Email Python Framework allows the user to email attachments to the configured recipients. 
+The framework picks the latest file of a .csv type from a pre-configured folder and emails that to a set of pre-configured recipients.
+The set of recipients, attachement folder, smtp server, smtup user-password can be configured in the Configuration file.
 
 # Installation
 
@@ -16,49 +18,39 @@ Required
 
 If you have git installed, clone the repository
 
-    git clone https://github.com/AnshulMangla/Intersight-Python-Automation.git
+    $ git clone https://github.com/AnshulMangla/Email-Python-Framework.git
     
-## Installing
+## Installing & Configuration
 
-After downloading, set up the Intersight Private and Public keys
+After downloading, update the configuration file (emailConfig.py) with the following details
 
-    cd Intersight-API-Toolkit
-    mkdir keys
+     $ cd email-with-attachments
     
-Download the Private and Public keys from your Intersight instance and save them as .txt files with following names under the 'keys' directory:
-
-    intersight-public-key.txt
-    intersight-private-key.txt
+Make the following changes to the emailConfig.py:
+    
+     - emailDetails.emailFrom: email id of the sender e.g. 'sender@sender.com',
+     - emailDetails.emailTo: email id of the recipients (comma separated with no space for multiple e.g. 'reciever1@reciever.com,reciever2@reciever.com')
+     - emailDetails.emailSubject: Prefix for the Subject line of the email (e.g. 'Subject Prefix |')
+     - emailDetails.emailPreamble: Prefix for the Subject line of the email (e.g. 'Subject Prefix |')
+     
+     - smtpServer = SMTP server IP or hostname with the SMTP port number 'smtp.server.com:port'
+     
+     - emailUsername = email log in for the SMTP server (e.g. 'smtpuser@smtpserver.com')
+     - emailPassword = password for the log in 
+     
+     - attachmentDirectory = 'Full Path to the directory on the local server where thee attachment files are located'
+    
     
 # Usage
 
-Execute the python file from the 'Intersight-API-Toolkit' directory
+Execute the python file from the 'email-with-attachments' directory
 
-    $ python3 intersight-api-to-csv.py
+    $ python3 email-with-attachment.py
     
-Command line will prompt you for the relative path of the Intersight API you want to execute:
-
-    Enter the relative path of the API: /compute/RackUnits
-   
-Command line will prompt you to enter the returned JSON object you want the script to convert to CSV format (e.g. Results in this case):
-
-    Enter the returned JSON object to process: Results
- 
-Command line will prompt you to enter number of Rows of the JSON object you want to output in CSV file (e.g. 100 below) ~ $top param in the API:
-
-    Enter the number of rows to process: 100
-
-    Note: Optional field. Press enter if you do not wish to enter any value
-
-Command line will prompt you to enter fields of JSON object you want to output as columns in CSV file (e.g. Dn,DeviceMoId below) ~ $select in the API :
-
-    Enter the columns to be selected (for $select param) Dn,DeviceMoId
+The python framework will pick the latest .csv file from the configured directory and send it to the configured recipients
     
-    Note: Optional field. Press enter if you do not wish to enter any value
-    
-Command line will prompt you to enter the filter string on on the basis of which the API will query the output to CSV file ~ $filter in the API :
+# Output
 
-    Enter the query strong for the $filter (e.g. MoID eq XXXX) DeviceMoId eq '5f41f5586f72612d31a8ff7f'
-    
-    Note: Optional field. Press enter if you do not wish to enter any value
-  
+The following output will be displayed i.e. the attachment file name and the list of recipients:
+
+    _"Your attachment [attachment1.csv] to the recipients [recipent1@recipient.com, recipent2@recipient.com] has been emailed"_
